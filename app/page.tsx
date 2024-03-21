@@ -1,13 +1,13 @@
 import { db } from "@/db";
 
 export default async function Home() {
-  const items = await db.query.testing.findMany()
+  const rooms = await db.query.room.findMany()
 
   return (
     <div className="">
-      {items?.map((item) => {
+      {rooms?.map((room) => {
         return (
-          <div key={item.id} className="">{item.name}</div>
+          <div key={room.id} className="">{room.name}</div>
         )
       })}
     </div>
