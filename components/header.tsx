@@ -49,6 +49,9 @@ export function Header() {
                 <Link href={"/"} className="">
                     Dev Finder
                 </Link>
+
+                <Link href={"/browse"} >Browse</Link>
+
                 <div className="flex items-center gap-4">
                     {session.data ?
                         <AccountDropDown /> :

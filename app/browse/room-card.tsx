@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card"
 import { IRoom } from "@/db/schema";
 import Link from "next/link";
-import { Button } from "../components/ui/button";
+import { Button } from "../../components/ui/button";
 import { GithubIcon } from "lucide-react";
 import { getsessions } from "@/lib/auth";
 
