@@ -6,12 +6,9 @@ import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import Image from "next/image";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import Link from "next/link";
 
 function AccountDropDown() {
@@ -20,18 +17,23 @@ function AccountDropDown() {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild >
-                <>
+                <Button variant={"outline"} >
                     <Avatar className="mr-2">
                         <AvatarImage src={session?.data?.user?.image ?? ""} />
                     </Avatar>
                     {session?.data?.user?.name}
-                </>
+                </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
 
                 <DropdownMenuItem onClick={() => signOut({
                     callbackUrl: "/"
                 })}>Sign Out</DropdownMenuItem>
+                <DropdownMenuItem asChild >
+                    <Link href={"/your-room"} >
+                        My Rooms
+                    </Link>
+                </DropdownMenuItem>
 
             </DropdownMenuContent>
         </DropdownMenu>

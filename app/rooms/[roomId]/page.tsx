@@ -3,9 +3,11 @@ import { GithubIcon } from "lucide-react"
 import Link from "next/link"
 import { VideoPlayer } from "./video-player"
 import Tagfilter from "@/app/tag-filter"
+import { unstable_noStore } from "next/cache"
 
 const RoomPage = async ({ params }: { params: { roomId: string } }) => {
     let roomId = params.roomId
+    unstable_noStore()
     const room = await getRoom(roomId)
 
     if (!room) return <div className="">No Room Of this Id Found</div>
