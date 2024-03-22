@@ -13,6 +13,7 @@ import { IRoom } from "@/db/schema";
 import { GithubIcon } from "lucide-react";
 import { getRooms } from "./data-access/rooms";
 import { Badge } from "@/components/ui/badge";
+import SearchBar from "./SearchBar";
 
 function RoomCard({ room }: { room: IRoom }) {
   const languages = room?.language.split(",").map((tag) => tag.trim())
@@ -31,7 +32,7 @@ function RoomCard({ room }: { room: IRoom }) {
             )
           })}
         </div>
-        
+
         {
           room?.githubRepo && <Link rel="noopener noreferrer" target="_blank" className="flex items-center" href={room?.githubRepo} ><GithubIcon className="mr-2" /> Github Project</Link>
         }
@@ -47,8 +48,8 @@ function RoomCard({ room }: { room: IRoom }) {
   )
 }
 
-export default async function Home() {
-  const rooms = await getRooms()
+export default async function Home({ searchParams }: { searchParams: { search: string } }) {
+  const rooms = await getRooms(searchParams.search)
 
   return (
     <div className=" min-h-screen  p-16">
@@ -60,6 +61,9 @@ export default async function Home() {
           </Link>
 
         </Button>
+      </div>
+      <div className="mb-12">
+        <SearchBar />
       </div>
       <div className="grid grid-cols-3 gap-4">
         {rooms?.map((room) => {
