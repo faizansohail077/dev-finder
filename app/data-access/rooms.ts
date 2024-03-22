@@ -1,5 +1,5 @@
 import { db } from "@/db"
-import { room } from "@/db/schema"
+import { IRoom, room } from "@/db/schema"
 import { getsessions } from "@/lib/auth"
 import { eq, like } from "drizzle-orm"
 
@@ -26,4 +26,7 @@ export async function getRoom(roomId: string) {
 }
 export async function deleteRoom(roomId: string) {
     return await db.delete(room).where(eq(room.id, roomId))
+}
+export async function editRoom(roomData: IRoom) {
+    await db.update(room).set({ ...roomData }).where(eq(room.id, roomData.id))
 }

@@ -11,7 +11,7 @@ import {
 import { IRoom } from "@/db/schema";
 import Link from "next/link";
 import { Button } from "../../components/ui/button";
-import { GithubIcon, Trash } from "lucide-react";
+import { GithubIcon, Pencil, Trash } from "lucide-react";
 import { useSession } from "next-auth/react";
 
 import {
@@ -29,13 +29,14 @@ import { deleteRoomActions } from "./actions";
 
 
 export default function UserRoomCard({ room }: { room: IRoom }) {
-    const session = useSession()
-    const deleteRoom = async () => {
-
-    }
     return (
         <Card>
-            <CardHeader>
+            <CardHeader className="relative">
+                <Button className="absolute top-2 right-2" size={"icon"}>
+                    <Link href={`/edit-room/${room.id}`} >
+                        <Pencil />
+                    </Link>
+                </Button>
                 <CardTitle>{room.name}</CardTitle>
                 <CardDescription>{room.description}</CardDescription>
             </CardHeader>
