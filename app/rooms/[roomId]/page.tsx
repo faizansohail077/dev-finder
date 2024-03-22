@@ -2,6 +2,7 @@ import { getRoom } from "@/app/data-access/rooms"
 import { GithubIcon } from "lucide-react"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
+import { VideoPlayer } from "./video-player"
 
 const RoomPage = async ({ params }: { params: { roomId: string } }) => {
     let roomId = params.roomId
@@ -13,7 +14,7 @@ const RoomPage = async ({ params }: { params: { roomId: string } }) => {
         <div className="grid grid-cols-4 min-h-screen">
             <div className="col-span-3 p-4 pr-2">
                 <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-4">
-                    <p > bg-red-300</p>
+                    <VideoPlayer room={room} />
                 </div>
             </div>
 
