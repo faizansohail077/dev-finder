@@ -81,7 +81,7 @@ const Createroomform = () => {
                         <FormItem>
                             <FormLabel>Github Repo</FormLabel>
                             <FormControl>
-                                <Input placeholder="shadcn" {...field} />
+                                <Input placeholder="https://github.com/faizansohail077/dev-finder" {...field} />
                             </FormControl>
                             <FormDescription>
                                 Please Enter GithubRepo link
@@ -95,12 +95,12 @@ const Createroomform = () => {
                     name="language"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Primary Programming Language</FormLabel>
+                            <FormLabel>Tags</FormLabel>
                             <FormControl>
-                                <Input placeholder="shadcn" {...field} />
+                                <Input placeholder="typescript, nextjs, shadcn" {...field} />
                             </FormControl>
                             <FormDescription>
-                                Primary Programming Language
+                              Language your programming languages, framework, libraries so people can find you
                             </FormDescription>
                             <FormMessage />
                         </FormItem>

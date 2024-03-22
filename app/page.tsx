@@ -12,18 +12,30 @@ import {
 import { IRoom } from "@/db/schema";
 import { GithubIcon } from "lucide-react";
 import { getRooms } from "./data-access/rooms";
+import { Badge } from "@/components/ui/badge";
 
 function RoomCard({ room }: { room: IRoom }) {
+  const languages = room?.language.split(",").map((tag) => tag.trim())
+
   return (
     <Card>
       <CardHeader>
         <CardTitle>{room.name}</CardTitle>
         <CardDescription>{room.description}</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex flex-col gap-2" >
+        <div className="flex items-center gap-2 flex-wrap">
+          {languages?.map((language) => {
+            return (
+              <Badge variant="outline" className="w-fit" key={language} >{language}</Badge>
+            )
+          })}
+        </div>
+        
         {
           room?.githubRepo && <Link rel="noopener noreferrer" target="_blank" className="flex items-center" href={room?.githubRepo} ><GithubIcon className="mr-2" /> Github Project</Link>
         }
+
       </CardContent>
       <CardFooter>
         <Button asChild >
