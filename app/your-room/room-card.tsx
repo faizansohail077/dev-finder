@@ -12,7 +12,7 @@ import { IRoom } from "@/db/schema";
 import Link from "next/link";
 import { Button } from "../../components/ui/button";
 import { GithubIcon, Pencil, Trash } from "lucide-react";
-import { useSession } from "next-auth/react";
+
 
 import {
     AlertDialog,
