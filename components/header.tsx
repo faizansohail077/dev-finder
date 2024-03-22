@@ -20,12 +20,12 @@ function AccountDropDown() {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild >
-                <Button className="mr-2" variant={"outline"} >
+                <>
                     <Avatar className="mr-2">
                         <AvatarImage src={session?.data?.user?.image ?? ""} />
                     </Avatar>
                     {session?.data?.user?.name}
-                </Button>
+                </>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
 

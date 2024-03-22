@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -37,6 +37,9 @@ const SearchBar = () => {
             router.push(`/`)
         }
     }
+    useEffect(() => {
+        form.setValue("search", query?.get("search") ?? "")
+    }, [query?.get("search"), form])
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="flex items-center gap-2 mb-4">
