@@ -5,6 +5,7 @@ import { db } from "@/db";
 import { IRoom, room } from "@/db/schema";
 import { getsessions } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export async function createRoomAction(roomData: Omit<IRoom, "id" | "userId">) {
     const session = await getsessions()
@@ -21,4 +22,5 @@ export async function editRoomAction(roomData: Omit<IRoom, "userId">) {
     }
     await editRoom({...roomData,userId:room?.userId!})
     revalidatePath("/your-room")
+    redirect("/your-room")
 }

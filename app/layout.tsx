@@ -5,6 +5,7 @@ import { Provider } from "./provider";
 import { Header } from "@/components/header";
 import NextTopLoader from 'nextjs-toploader'
 const inter = Inter({ subsets: ["latin"] });
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: "Dev Finder",
@@ -20,9 +21,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Provider>
+          <Toaster />
           <NextTopLoader />
           <Header />
-          {children}
+          <div className="container mx-auto">
+            {children}
+          </div>
         </Provider>
       </body>
     </html >

@@ -8,6 +8,7 @@ import { revalidatePath } from "next/cache";
 export async function createRoomAction(roomData: Omit<IRoom, "id" | "userId">) {
     const session = await getsessions()
     if (!session) { throw new Error("Not Authorized") }
-    await db.insert(room).values({ ...roomData, userId: session.user.id })
+    const newroom = await db.insert(room).values({ ...roomData, userId: session.user.id }).returning()
     revalidatePath("/")
+    return newroom[0]
 }

@@ -17,7 +17,7 @@ function AccountDropDown() {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild >
-                <Button variant={"outline"} >
+                <Button variant={"link"} >
                     <Avatar className="mr-2">
                         <AvatarImage src={session?.data?.user?.image ?? ""} />
                     </Avatar>
@@ -43,21 +43,23 @@ export function Header() {
     const session = useSession()
 
     return (
-        <header className="z-10 bg-gray-100 dark:bg-gray-900 container mx-auto py-4">
-            <div className="flex items-center justify-between">
-                {/* logo */}
-                <Link href={"/"} className="">
-                    Dev Finder
-                </Link>
+        <header className="z-10 bg-gray-100 dark:bg-gray-900  py-4">
+            <div className="container mx-auto">
+                <div className="flex items-center justify-between">
+                    {/* logo */}
+                    <Link href={"/"} className="">
+                        Dev Finder
+                    </Link>
 
-                <Link href={"/browse"} >Browse</Link>
+                    <Link href={"/browse"} >Browse</Link>
 
-                <div className="flex items-center gap-4">
-                    {session.data ?
-                        <AccountDropDown /> :
-                        <Button variant={"outline"} onClick={() => signIn("google")} >Sign In</Button>
-                    }
-                    <ModeToggle />
+                    <div className="flex items-center gap-4">
+                        {session.data ?
+                            <AccountDropDown /> :
+                            <Button variant={"outline"} onClick={() => signIn("google")} >Sign In</Button>
+                        }
+                        <ModeToggle />
+                    </div>
                 </div>
             </div>
         </header>

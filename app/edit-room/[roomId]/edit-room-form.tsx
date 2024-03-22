@@ -15,8 +15,9 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { editRoomAction } from './actions'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import { IRoom } from '@/db/schema'
+import { useToast } from '@/components/ui/use-toast'
 
 const formSchema = z.object({
     name: z.string().min(2).max(50),
@@ -26,7 +27,8 @@ const formSchema = z.object({
 })
 
 const EditRoomForm = ({ room }: { room: IRoom }) => {
-    const router = useRouter()
+    const { toast } = useToast()
+
     const params = useParams()
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -42,6 +44,10 @@ const EditRoomForm = ({ room }: { room: IRoom }) => {
             id: params.roomId! as string,
             ...values
         })
+        toast({
+            description: "Room Updated",
+        })
+       
     }
     return (
         <Form {...form}>
