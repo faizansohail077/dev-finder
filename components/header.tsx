@@ -24,8 +24,6 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { useState } from "react";
-import { getsessions } from "@/lib/auth";
-import deleteUser from "@/app/data-access/users";
 import { deleteAccount } from "@/app/actions";
 
 function AccountDropDown() {
