@@ -21,7 +21,6 @@ import {
     AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTitle,
-    AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { useState } from "react";
 import { deleteAccount } from "@/app/actions";
